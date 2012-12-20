@@ -7,9 +7,9 @@ require "active_record"
 require "logger"
 require "yaml"
 
-config = YAML.load_file("./config.yaml")
+config = YAML.load_file("./lib/config.yaml")
 ActiveRecord::Base.configurations = config["db"]
-ActiveRecord::Base.establish_connection("development")  
+ActiveRecord::Base.establish_connection("development")
 ActiveRecord::Base.logger = Logger.new(config["log"])
 
 class Profile < ActiveRecord::Base
@@ -35,9 +35,6 @@ post "/result" do
   @genes = params[:genes]
   @assays = params[:assays]
   @cell_type = params[:cell_type]
-  
-  
   @result = get_result(@genes, @assays, @cell_type)
-  
   haml :result
 end
