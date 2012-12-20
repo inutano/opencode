@@ -4,6 +4,14 @@ operation ENCODE * open code
 
 ## Files
 
+### publication_pmid.txt
+
+34 ENCODE publications, a list of pmid
+
+### publication_pmcid_pmid.tsv
+
+14 publications released on PMC, pairs of pmcid and pmid
+
 ### encode_GEO_accessions.txt
 
 2189 GEO accession ids extracted from experiment_list.csv
