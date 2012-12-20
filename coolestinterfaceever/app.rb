@@ -16,14 +16,9 @@ class Profile < ActiveRecord::Base
 end
 
 def get_result(genes, assays, cell_type)
-
   genes.split("\n").map do |gene|
     Profile.where(:gene => gene)
   end
-  
-  [{gene:"geneA",score:"1",link_ucsc:"url_ucsc",link_igv:"link_igv"},
-   {gene:"geneB",score:"0",link_ucsc:"url_ucsc",link_igv:"link_igv"},
-   {gene:"geneC",score:"1",link_ucsc:"url_ucsc",link_igv:"link_igv"}]
 end
 
 set :haml, :format => :html5 
