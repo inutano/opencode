@@ -7,11 +7,17 @@ require "csv"
 class ProfileInit < ActiveRecord::Migration
   def self.up
     create_table(:encode_demos) do |t|
-      t.string :gene, :null => false, :limit => 20
-      t.float :score, :null => false
+      t.string :gene_name, :null => false, :limit => 20
+      t.string :gene_id, :null => false
+      t.string :exp_acc, :null => false
+      t.string :expression, :null => false, :limit => 5
+      t.float :pvalue, :null => false
+      t.string :ucsc_url, :null => false
       t.timestamps
     end
-    add_index :encode_demos, :gene, :name => :gene_idx
+    add_index :encode_demos, :gene_name, :name => :genename_idx
+    add_index :encode_demos, :gene_id, :name => :geneid_idx
+    add_index :encode_demos, :exp_acc, :name => :expacc_idx
   end
   def self.down
     drop_table(:encode_demos)
@@ -40,15 +46,17 @@ if __FILE__ == $0
     rm_header = csv.shift
     
     inserts = csv.map do |row|
-      { gene: row.first,
-        score: row[1]
-        }
+      { gene_name: row.first,
+        gene_id: row[1],
+        exp_acc: row[2],
+        expression: row[3],
+        pvalue: row[4],
+        ucsc_url: row[5] }
     end
     
     Profile.transaction do
       inserts.each do |insert|
         Profile.create(insert)
-        puts insert
       end
     end
   end
