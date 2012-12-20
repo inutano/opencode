@@ -1,0 +1,59 @@
+!!! XML
+!!!
+%html
+  %head
+    %title op.ENcode
+    %meta{:charset => "utf-8", :content => "text/html", "http-equiv" => "content"}
+    %link{:rel => :stylesheet, :href => "http://floating-fog-3562.heroku.com/fontin_sans.css", :type => "text/css"}
+    %link{:rel => :stylesheet, :href => "http://g86.dbcls.jp/~iNut/bootstrap/css/bootstrap.css", :type => "text/css"}
+    %link{:rel => :stylesheet, :href => "./style.css", :type => "text/css"}
+  
+  %body
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          %a.btn.btn-navbar{ "data-toggle" => "collapse", "data-target" => ".nav-collapse"}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.brand
+            op.ENcode browser
+          .nav-collapse
+            %ul.nav
+              %li
+                %a{:href => "/"} Home
+              %li
+                %a{:href => "http://wiki.lifesciencedb.jp/mw/index.php/BH12.12/op.ENcode" } BH12.12
+              %li
+                %a{:href => "https://github.com/inutano/opencode/" } GitHub
+              %li
+                %a{:href => "https://github.com/inutano/opencode/wiki" } Wiki
+
+    %header
+      %h1 op.ENcode
+      %p open code * operation ENCODE
+      %hr
+    
+    %section
+      %form{ :name => "form", :action => "/result", :method => "POST" }
+        %fieldset
+          %textarea{ :name => "genes", :id => "inputtext" }
+          Assays:
+          %select{ :id => "assays", :name => "assays", :width => 66 }
+            %option{ :value => "Metyl Array" }
+              Metyl Array
+            %option{ :value => "Metyl RRBS" }
+              Metyl RRBS
+          Cell Type
+          %select{ :id => "cell_type", :name => "cell_type", :width => 66 }
+            %option{ :value => "GM12878" }
+              GM12878
+            %option{ :value => "H1-hESC" }
+              H1-hESC
+            %option{ :value => "K562" }
+              K562
+        %button{ :type => "submit" }
+          submit
+        
+    %footer
+      op.ENcode 2012

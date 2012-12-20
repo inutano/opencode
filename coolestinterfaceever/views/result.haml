@@ -1,0 +1,60 @@
+!!! XML
+!!!
+%html
+  %head
+    %title Result
+    %meta{:charset => "utf-8", :content => "text/html", "http-equiv" => "content"}
+    %link{:rel => :stylesheet, :href => "http://floating-fog-3562.heroku.com/fontin_sans.css", :type => "text/css"}
+    %link{:rel => :stylesheet, :href => "http://g86.dbcls.jp/~iNut/bootstrap/css/bootstrap.css", :type => "text/css"}
+    %link{:rel => :stylesheet, :href => "./style.css", :type => "text/css"}
+  
+  %body
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          %a.btn.btn-navbar{ "data-toggle" => "collapse", "data-target" => ".nav-collapse"}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.brand
+            op.ENcode browser
+          .nav-collapse
+            %ul.nav
+              %li
+                %a{:href => "/"} Home
+              %li
+                %a{:href => "http://wiki.lifesciencedb.jp/mw/index.php/BH12.12/op.ENcode" } BH12.12
+              %li
+                %a{:href => "https://github.com/inutano/opencode/" } GitHub
+              %li
+                %a{:href => "https://github.com/inutano/opencode/wiki" } Wiki
+
+    %header
+      %h2 Result
+      %hr
+    
+    %section
+      %h4 query
+      %p= "genes: " + @genes
+      %p= "assays: " + @assays
+      %p= "cell type " + @cell_type
+    
+    %secrion
+      %table{:class => "table table-hover"}
+        %tr
+          %th Gene
+          %th Score
+          %th UCSC
+          %th IGV
+
+        - @result.each do |row|
+          %tr
+            %td= row[:gene]
+            %td= row[:score]
+            %td
+              %a{:href => row[:link_ucsc] }= row[:link_ucsc]
+            %td
+              %a{:href => row[:link_igv] }= row[:link_igv]
+      
+    %footer
+      op.ENCODE 2012
