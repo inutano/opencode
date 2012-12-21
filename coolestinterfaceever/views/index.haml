@@ -38,24 +38,30 @@
       %form{ :name => "form", :action => "/result", :method => "POST" }
         %fieldset
           %textarea{ :name => "genes", :id => "inputtext", :placeholder => "Enter Gene Ids." }
-          %span{ :class => "help-inline" }
-            Assays:
-          %select{ :id => "assays", :name => "assays", :multiple => "multiple" }
-            %option{ :value => "Metyl Array" }
-              Metyl Array
-            %option{ :value => "Metyl RRBS" }
-              Metyl RRBS
-          %span{ :class => "help-inline" }
-            Cell Type
-          %select{ :id => "cell_type", :name => "cell_type", :multiple => "multiple" }
-            %option{ :value => "GM12878" }
-              GM12878
-            %option{ :value => "H1-hESC" }
-              H1-hESC
-            %option{ :value => "K562" }
-              K562
-          %button{ :type => "submit", :class => "btn btn-large btn-block btn-primary" }
-            submit
+          %p{ :class => "formp" }
+            %span{ :class => "help-inline" }
+              Assays:
+            %label{ :class => "checkbox inline" }
+              %input{ :type => "checkbox", :name => "a1", :value => "Metyl Array" }
+                Metyl Array
+            %label{ :class => "checkbox inline" }
+              %input{ :type => "checkbox", :name => "a2", :value => "Metyl RRBS" }
+                Metyl RRBS
+          %p{ :class => "formp" }
+            %span{ :class => "help-inline" }
+              Cell Type
+            %label{ :class => "checkbox inline" }
+              %input{ :type => "checkbox", :name => "c1", :value => "GM12878" }
+                GM12878
+            %label{ :class => "checkbox inline" }
+              %input{ :type => "checkbox", :name => "c2", :value => "h1-hESC" }
+                h1-hESC
+            %label{ :class => "checkbox inline" }
+              %input{ :type => "checkbox", :name => "c3", :value => "K562" }
+                K562
+          %p{ :class => "formp" }
+            %button{ :type => "submit", :class => "btn btn-large btn-block btn-primary" }
+              submit
         
     %footer
       op.ENcode 2012
