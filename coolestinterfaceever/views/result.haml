@@ -38,24 +38,42 @@
       %p= "genes: " + @genes + ", assays: " + @assays + ", cell type " + @cell_type
     
     %section{ :class => "table_section" }
-      %table{:class => "table table-hover"}
-        %tr
-          %th gene name
-          %th gene id
-          %th expriment accession
-          %th expression
-          %th P-value
-          %th UCSC Genome Browser
-
-        - @result.each do |row|
+      - @result.each do |row|
+        %hr
+        %h3= row.gene_name
+        %p= row.gene_id
+        %p
+          - base_url = "http://genome.ucsc.edu/cgi-bin/hgTracks?clade=mammal&org=Human&db=hg19&position="
+          %a{ :href => "#{base_url}#{row.gene_name}" } View in UCSC Genome Browser
+        
+        %table{ :class => "table table-hover" }
+          %tr{ :class => "info" }
+            - base_g86 = "http://localhost:60151/load?file=http://g86.dbcls.jp/~iNut/Sites/dono/"
+            %th category
+            %th
+              %a{ :href => "#{base_g86}gm12878.bed&locus=#{gene_name}&genome=hg19" } 
+                GM12878
+            %th
+              %a{ :href => "#{base_g86}h1hesc.bed&locus=#{gene_name}&genome=hg19" }
+                H1-hESC
+            %th
+              %a{ :href => "#{base_g86}k562.bed&locus=#{gene_name}&genome=hg19" }
+                K562
           %tr
-            %td= row.gene_name
-            %td= row.gene_id
-            %td= row.exp_acc
-            %td= row.expression
-            %td= row.pvalue
-            %td
-              %a{:href => row.ucsc_url }= row.ucsc_url
-      
+            %td TSS1500
+            %td= row.c1_tss1500
+            %td= row.c2_tss1500
+            %td= row.c3_tss1500
+          %tr
+            %td TSS200
+            %td= row.c1_tss200
+            %td= row.c2_tss200
+            %td= row.c3_tss200
+          %tr
+            %td Gene Body
+            %td= row.c1_gb
+            %td= row.c2_gb
+            %td= row.c3_gb
+
     %footer
       op.ENCODE 2012
