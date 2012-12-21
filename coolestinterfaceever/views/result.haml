@@ -35,26 +35,27 @@
     
     %section
       %h4 query
-      %p= "genes: " + @genes
-      %p= "assays: " + @assays
-      %p= "cell type " + @cell_type
+      %p= "genes: " + @genes + ", assays: " + @assays + ", cell type " + @cell_type
     
-    %secrion
+    %section{ :class => "table_section" }
       %table{:class => "table table-hover"}
         %tr
-          %th Gene
-          %th Score
-          %th UCSC
-          %th IGV
+          %th gene name
+          %th gene id
+          %th expriment accession
+          %th expression
+          %th P-value
+          %th UCSC Genome Browser
 
         - @result.each do |row|
           %tr
-            %td= row[:gene]
-            %td= row[:score]
+            %td= row.gene_name
+            %td= row.gene_id
+            %td= row.exp_acc
+            %td= row.expression
+            %td= row.pvalue
             %td
-              %a{:href => row[:link_ucsc] }= row[:link_ucsc]
-            %td
-              %a{:href => row[:link_igv] }= row[:link_igv]
+              %a{:href => row.ucsc_url }= row.ucsc_url
       
     %footer
       op.ENCODE 2012

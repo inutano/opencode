@@ -1,26 +1,27 @@
 # -*- coding: utf-8 -*-
 
 require "active_record"
+require "logger"
 require "yaml"
 require "csv"
 
 class ProfileInit < ActiveRecord::Migration
   def self.up
-    create_table(:encode_demos) do |t|
+    create_table(:profiles) do |t|
       t.string :gene_name, :null => false, :limit => 20
       t.string :gene_id, :null => false
-      t.string :exp_acc, :null => false
+
       t.string :expression, :null => false, :limit => 5
       t.float :pvalue, :null => false
       t.string :ucsc_url, :null => false
       t.timestamps
     end
-    add_index :encode_demos, :gene_name, :name => :genename_idx
-    add_index :encode_demos, :gene_id, :name => :geneid_idx
-    add_index :encode_demos, :exp_acc, :name => :expacc_idx
+    add_index :profiles, :gene_name, :name => :genename_idx
+    add_index :profiles, :gene_id, :name => :geneid_idx
+    add_index :profiles, :exp_acc, :name => :expacc_idx
   end
   def self.down
-    drop_table(:encode_demos)
+    drop_table(:profiles)
   end
 end
 
