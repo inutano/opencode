@@ -18,13 +18,13 @@ end
 
 def get_result(genes, assays, cell_type)
   records = genes.split("\n").map do |gene|
-    if gene =~ /^ENSG/
+    if gene =~ /^NM_/
       Profile.where(:gene_id => gene.chomp)
     else
       Profile.where(:gene_name => gene.chomp)
     end
   end
-  records.flatten.sort_by{|r| r.pvalue }.reverse
+  records.flatten
 end
 
 set :haml, :format => :html5 
