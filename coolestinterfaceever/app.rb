@@ -6,6 +6,7 @@ require "sass"
 require "active_record"
 require "logger"
 require "yaml"
+require "ap"
 
 config = YAML.load_file("./lib/config.yaml")
 ActiveRecord::Base.configurations = config["db"]
@@ -16,9 +17,14 @@ class Profile < ActiveRecord::Base
 end
 
 def get_result(genes, assays, cell_type)
-  genes.split("\n").map do |gene|
-    Profile.where(:gene => gene)
+  records = genes.split("\n").map do |gene|
+    if gene =~ /^ENSG/
+      Profile.where(:gene_id => gene.chomp)
+    else
+      Profile.where(:gene_name => gene.chomp)
+    end
   end
+  records.flatten.sort_by{|r| r.pvalue }.reverse
 end
 
 set :haml, :format => :html5 
@@ -33,8 +39,8 @@ end
 
 post "/result" do
   @genes = params[:genes]
-  @assays = params[:assays]
-  @cell_type = params[:cell_type]
+  @assays = [params[:a1], params[:a2]].join(", ")
+  @cell_type = [params[:c1], params[:c2], params[:c3]].join(", ")
   @result = get_result(@genes, @assays, @cell_type)
   haml :result
 end
