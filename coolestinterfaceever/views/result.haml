@@ -40,24 +40,23 @@
     %section{ :class => "table_section" }
       - @result.each do |row|
         %hr
-        %h3= row.gene_name
-        %p= row.gene_id
+        %h3= row.gene_id
         %p
           - base_url = "http://genome.ucsc.edu/cgi-bin/hgTracks?clade=mammal&org=Human&db=hg19&position="
-          %a{ :href => "#{base_url}#{row.gene_name}" } View in UCSC Genome Browser
+          %a{ :href => "#{base_url}stip1" } View in UCSC Genome Browser
         
         %table{ :class => "table table-hover" }
           %tr{ :class => "info" }
             - base_g86 = "http://localhost:60151/load?file=http://g86.dbcls.jp/~iNut/dono/"
             %th category
             %th
-              %a{ :href => "#{base_g86}gm12878.bed&locus=#{gene_name}&genome=hg19" } 
+              %a{ :href => "#{base_g86}gm12878.bed&locus=stip1&genome=hg19" } 
                 GM12878
             %th
-              %a{ :href => "#{base_g86}h1hesc.bed&locus=#{gene_name}&genome=hg19" }
+              %a{ :href => "#{base_g86}h1hesc.bed&locus=stip1&genome=hg19" }
                 H1-hESC
             %th
-              %a{ :href => "#{base_g86}k562.bed&locus=#{gene_name}&genome=hg19" }
+              %a{ :href => "#{base_g86}k562.bed&locus=stip1&genome=hg19" }
                 K562
           %tr
             %td TSS1500
