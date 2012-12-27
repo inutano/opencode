@@ -141,7 +141,7 @@ if __FILE__ == $0
         %tr
           %td pmid
           %td
-            %a{ :href => "http://www.ncbi.nlm.nih.gov/pubmed/#{v.first["pmid"]}" }= v.first["pmid"]
+            %a{ :href => "http://www.ncbi.nlm.nih.gov/pubmed/" + v.first["pmid"] }= v.first["pmid"]
         %tr
           %td affiliation
           %td= v.first["affiliation"]
@@ -157,7 +157,7 @@ if __FILE__ == $0
         - v.each do |data|
           %tr
             %td
-              %a{ :href => "http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=#{data["gsmid"]}" }= data["gsmid"]
+              %a{ :href => "http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=" + data["gsmid"] }= data["gsmid"]
             %td= data["data_type"]
             %td= data["cell_type"]
             %td= data["experimental_factors"]
