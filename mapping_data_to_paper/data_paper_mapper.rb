@@ -133,13 +133,10 @@ if __FILE__ == $0
               %li
                 %a{:href => "https://github.com/inutano/opencode/wiki" } Wiki
     %h4= "mapping ENCODE data to publised article."
-    %section
-      %div.well
-        %p= "Index"
-        %ul
-          - collection.each_pair do |k,v|
-            %li
-              %a{ :href => "\#" + k }= v.first["title"] + " " + v.size.to_s + " datasets"
+    %ul
+      - collection.each_pair do |k,v|
+        %li
+          %a{ :href => "\#" + k }= v.first["title"] + " " + v.size.to_s + " datasets"
             
     %section{ :class => "table_section" }
     - collection.each_pair do |k,v|
