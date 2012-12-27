@@ -146,7 +146,8 @@ if __FILE__ == $0
           %td affiliation
           %td= v.first["affiliation"]
       
-      %hr    
+      %hr
+      %h3= "total number of dataset: " + v.size.to_s
       %table{ :class => "table table-hover"}
         %tr{ :class => "info" }
           %th GSMID
