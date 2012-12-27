@@ -140,7 +140,8 @@ if __FILE__ == $0
       %table{ :class => "table table-hover" }
         %tr
           %td pmid
-          %td= v.first["pmid"]
+          %td
+            %a{ :href => "http://www.ncbi.nlm.nih.gov/pubmed/#{v.first["pmid"]}" }= v.first["pmid"]
         %tr
           %td affiliation
           %td= v.first["affiliation"]
@@ -155,7 +156,8 @@ if __FILE__ == $0
           %th treatment
         - v.each do |data|
           %tr
-            %td= data["gsmid"]
+            %td
+              %a{ :href => "http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=#{data["gsmid"]}" }= data["gsmid"]
             %td= data["data_type"]
             %td= data["cell_type"]
             %td= data["experimental_factors"]
