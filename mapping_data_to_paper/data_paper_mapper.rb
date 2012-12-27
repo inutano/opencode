@@ -71,7 +71,7 @@ if __FILE__ == $0
             treatment = cs[4]
           else
             experimental_factors = cs[2]
-            treatment = cs[4]
+            treatment = cs[3]
           end
           
           article_info = pmid_to_article_info(pmid)
