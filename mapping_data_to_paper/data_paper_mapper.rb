@@ -132,7 +132,7 @@ if __FILE__ == $0
                 %a{:href => "https://github.com/inutano/opencode/" } GitHub
               %li
                 %a{:href => "https://github.com/inutano/opencode/wiki" } Wiki
-    %h4= "mapping ENCODE data to publised article."
+    %h4= "mapping ENCODE data to published article."
     %ul
       - collection.each_pair do |k,v|
         %li
